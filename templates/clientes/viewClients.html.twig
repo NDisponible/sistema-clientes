@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Clientes{% endblock %}
+
+{% block body %}
+<div class="container col-7 text-center mt-4 mb-b">
+    {% for message in app.flashes('notice') %}
+    <div class="alert alert-success mt-4 mb-b">
+        {{ message }}
+    </div> 
+    {% endfor %}
+    <a class="btn btn-success mt-4 mb-4 text-white" href="{{ path('create')}}">Crear cliente</a> 
+    <table class="table table-responsive">
+        <thead class="table-dark">
+          <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Cliente</th>
+            <th scope="col">Email</th>
+            <th scope="col">Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for cliente in clientes %}
+          <tr>
+            <th scope="row">{{cliente.id}}</th>
+            <td>{{cliente.cliente}}</td>
+            <td>{{cliente.email}}</td>
+            <td>
+                <a class="btn btn-info" href="{{ path('update',{'id': cliente.id })}}">Modificar</a>
+                <a class="btn btn-danger" href="{{ path('update',{'id': cliente.id })}}">Eliminar</a> 
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>    
+</div>
+{% endblock %}

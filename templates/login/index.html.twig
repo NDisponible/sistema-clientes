@@ -1,0 +1,30 @@
+{% extends "base.html.twig" %}
+{% block title %}Iniciar sesión{% endblock %}
+
+{% block body %}
+{% if error %}
+<div>{{ error.message|trans(error.messageData, 'security') }}</div>
+{% endif %}
+<div class="container">
+    <div class="row">
+        <h2  class="titulo mt-5 mb-3 text-center">Iniciar sesión</h2>
+        <div class="caja container border col-md-4 mt-4">
+            <div class="col-md-2 offset-md-3 mt-2 mb-2">
+            <form action="{{ path('view') }}" method="post">
+                <div class="form-group mt-4 mb-2 text-center">
+                    <label for="username">Email:</label>
+                    <input type="text" id="username" name="_username" value="{{ last_username }}" />    
+                </div>  
+                <div class="form-group mt-4 mb-2 text-center">
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="_password" />
+                </div>
+                <div class="form-group mt-4 mb-4 text-center">
+                <button class="btn btn-success" type="submit">Acceder</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</div>
+{% endblock %}

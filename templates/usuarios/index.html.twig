@@ -1,0 +1,58 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Usuarios{% endblock %}
+
+{% block body %}
+<div class="container col-md-8 text-center mt-4 mb-b">
+    {% for message in app.flashes('notice') %}
+    <div class="alert alert-success mt-4 mb-b">
+        {{ message }}
+    </div> 
+    {% endfor %}
+    <a class="btn btn-success mt-4 mb-4 text-white" href="{{ path('createUser')}}">Crear usuario</a> 
+    <table class="table table-responsive">
+        <thead class="table-dark">
+          <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Apellido(s)</th>
+            <th scope="col">Población</th>
+            <th scope="col">Categoria</th>
+            <th scope="col">Edad</th>
+            <th scope="col">Estado</th>
+            <th scope="col">Fecha creación</th>
+            <th scope="col">Fecha modificación</th>
+            <th scope="col">Id cliente</th>
+            <th scope="col">Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for usuario in usuarios %}
+          <tr>
+            <th scope="row">{{usuario.id}}</th>
+            <td>{{usuario.nombre}}</td>
+            <td>{{usuario.apellidos}}</td>
+            <td>{{usuario.poblacion}}</td>
+            <td>{{usuario.categoria}}</td>
+            <td>{{usuario.edad}}</td>
+            <td>{{usuario.estado}}</td>
+            <td>{{usuario.fechaCreacion|date('d-m-Y')}}</td>
+            <td>{{usuario.fechaModificacion|date('d-m-Y')}}</td>
+            <td>{{usuario.idCliente}}</td>
+            <td>
+                <a class="btn btn-info" href="{{ path('updateUser',{'id': usuario.id })}}">Modificar</a>
+                <a class="btn btn-danger" href="{{ path('deleteUser',{'id': usuario.id })}}">Eliminar</a> 
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>  
+      <p class="text-center">Visualizando desde <strong>{{ desde }}</strong> hasta <strong>{{ next }}</strong> de <strong>{{ usuarios|length }}</strong> usuarios registrados</p>
+      {% if previous >=0 %} 
+        <a href="{{ path('indexUsuarios', {offset: previous}) }}" class="btn btn-primary">Anterior</a> 
+      {% endif %}
+      {% if next < usuarios|length %} 
+        <a href="{{ path('indexUsuarios', {offset: next}) }}" class="btn btn-primary">Siguente</a> 
+      {% endif %}
+</div>
+{% endblock %}

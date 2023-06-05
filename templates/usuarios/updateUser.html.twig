@@ -1,0 +1,58 @@
+{% extends "base.html.twig" %}
+{% block body %}
+<div class="container">
+    <div class="row">
+        <h2  class="titulo mt-5 mb-3 text-center">Modificar usuario</h2>
+        <div class="caja container border col-md-6">
+        {% for message in app.flashes('notice') %}
+            <div class="alert alert-success">
+                {{ message }}
+            </div>
+        {% endfor %}
+        <div class="col-md-6 offset-md-3 mt-4 mb-2">
+            {{ form_start(form) }}
+            <div class="form-group">
+                {{ form_label(form.nombre) }}
+                {{ form_widget(form.nombre,{'attr':{'class':'form-control'}})}}
+            </div>
+            <div class="form-group">
+                {{ form_label(form.apellidos) }}
+                {{ form_widget(form.apellidos,{'attr':{'class':'form-control'}})}}
+            </div>
+            <div class="form-group">
+                {{ form_label(form.poblacion) }}
+                {{ form_widget(form.poblacion,{'attr':{'class':'form-control'}})}}
+            </div>
+            <div class="form-group">
+                {{ form_label(form.categoria) }}
+                {{ form_widget(form.categoria,{'attr':{'class':'form-control'}})}}
+            </div>
+            <div class="form-group">
+                {{ form_label(form.edad) }}
+                {{ form_widget(form.edad,{'attr':{'class':'form-control'}})}}
+            </div>
+            <div class="form-group">
+                {{ form_label(form.estado) }}
+                {{ form_widget(form.estado,{'attr':{'class':'form-control'}})}}
+            </div>
+            <div class="form-group">
+                {{ form_label(form.fechaCreacion) }}
+                {{ form_widget(form.fechaCreacion,{'attr':{'class':'form-control'}})}}
+            </div>
+            <div class="form-group">
+                {{ form_label(form.fechaModificacion) }}
+                {{ form_widget(form.fechaModificacion,{'attr':{'class':'form-control'}})}}
+            </div>
+            <div class="form-group">
+                {{ form_label(form.idCliente) }}
+                {{ form_widget(form.idCliente,{'attr':{'class':'form-control'}})}}
+            </div>
+            <div class="form-group">
+                <button class="btn btn-primary mt-2 mb-4 text-white">Modificar</button>
+            </div>
+            {{ form_end(form) }}
+        </div>
+    </div>
+</div>
+</div>
+{% endblock %}

@@ -1,2 +1,2 @@
 # Sistema de clientes y usuarios con SYMFONY y MYSQL.
-![](https://github.com/NDisponible/sistema-clientes/blob/main/inicioSistema.png)
+![](https://github.com/NDisponible/sistema-clientes/blob/main/sistemaClientes.png)
